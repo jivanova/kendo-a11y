@@ -7,7 +7,7 @@ on:
       - opened
 jobs:
   label_milestoned_issues:
-    if: ${{ github.event.milestone != '' }}
+    if: ${{ github.event.issue.milestone != '' }}
     runs-on: ubuntu-latest
     permissions:
       issues: write
@@ -19,7 +19,7 @@ jobs:
           remove-labels: "FP: Completed, FP: Unplanned"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
   label_unmilestoned_issues:
-    if: ${{ github.event.milestone == '' }}
+    if: ${{ github.event.issue.milestone == '' }}
     runs-on: ubuntu-latest
     permissions:
       issues: write
