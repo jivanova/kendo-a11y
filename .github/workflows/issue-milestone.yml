@@ -28,4 +28,3 @@ jobs:
           add-labels: "FP: Completed"
           remove-labels: "FP: Unplanned, FP: Planned, FP: In Development"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-		  
