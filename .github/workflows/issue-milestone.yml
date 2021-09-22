@@ -1,11 +1,11 @@
-name: Label issues
+name: Label milestoned issues
 on:
   issues:
     types:
       - milestoned
 jobs:
   label_opened_issues:
-    if: github.event.issues.state == 'opened' && !contains(github.event.issues.labels.*.name, 'In Development')
+    if: github.event.issue.state == 'opened' && !contains(github.event.issue.labels.*.name, 'In Development')
     runs-on: ubuntu-latest
     permissions:
       issues: write
@@ -17,7 +17,7 @@ jobs:
           remove-labels: "FP: Unplanned"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
   label_closed_issues:
-    if: github.event.issues.state == 'closed'
+    if: github.event.issue.state == 'closed'
     runs-on: ubuntu-latest
     permissions:
       issues: write
