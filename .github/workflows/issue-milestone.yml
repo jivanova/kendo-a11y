@@ -1,0 +1,31 @@
+name: Label issues
+on:
+  issues:
+    types:
+      - milestoned
+jobs:
+  label_opened_issues:
+    if: github.event.issues.state == 'opened' && !contains(github.event.pull_request.labels.*.name, 'In Development')
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Label issues
+        uses: andymckay/labeler@1.0.2
+        with:
+          add-labels: "FP: Planned"
+          remove-labels: "FP: Unplanned"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+  label_closed_issues:
+    if: github.event.issues.state == 'closed'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Label issues
+        uses: andymckay/labeler@1.0.2
+        with:
+          add-labels: "FP: Completed"
+          remove-labels: "FP: Unplanned, FP: Planned, FP: In Development"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+		  
