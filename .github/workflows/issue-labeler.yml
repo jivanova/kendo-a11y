@@ -7,7 +7,7 @@ on:
       - opened
 jobs:
   label_milestoned_issues:
-    if: github.event.issues.milestone != null && !contains(github.event.pull_request.labels.*.name, 'In Development')
+    if: github.event.issues.milestone != null
     runs-on: ubuntu-latest
     permissions:
       issues: write
