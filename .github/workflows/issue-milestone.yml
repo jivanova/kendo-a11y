@@ -17,7 +17,7 @@ jobs:
           remove-labels: "FP: Unplanned"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
   label_closed_issues:
-    if: ${{ github.event.issue.state == 'closed' }
+    if: ${{ github.event.issue.state == 'closed' }}
     runs-on: ubuntu-latest
     permissions:
       issues: write
