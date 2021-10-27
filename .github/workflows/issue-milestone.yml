@@ -5,7 +5,7 @@ on:
       - milestoned
 jobs:
   label_opened_issues:
-    if: ${{ github.event.issue.state == 'opened' && !contains(github.event.issue.labels.*.name, 'FP: In Development') }}
+    if: ${{ github.event.issue.state == 'opened' && !contains(join(github.event.issue.labels.*.name, ''), 'Development') }}
     runs-on: ubuntu-latest
     permissions:
       issues: write
