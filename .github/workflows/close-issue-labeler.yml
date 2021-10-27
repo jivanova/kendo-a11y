@@ -1,0 +1,18 @@
+
+name: Label close issues
+on:
+  issues:
+    types:
+      - closed
+jobs:
+  label_closed_issues:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Label issues
+        uses: andymckay/labeler@1.0.2
+        with:
+          add-labels: "FP: Completed"
+          remove-labels: "FP: Unplanned, FP: Planned, FP: In Development"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}

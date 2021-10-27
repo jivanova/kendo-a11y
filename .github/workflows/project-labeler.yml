@@ -7,7 +7,7 @@ on:
 
 jobs:
   moved_backlog:
-    if: github.event.project_card.column_id == '16078255'
+    if: github.event.project_card.column_id == '16074546'
     runs-on: ubuntu-latest
     permissions:
       issues: write
@@ -20,8 +20,9 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
   moved_inprogress_rft_testing:
     if: |
-      github.event.project_card.column_id == '16078256' ||
-      github.event.project_card.column_id == '16078259'
+      github.event.project_card.column_id == '16074551' ||
+      github.event.project_card.column_id == '16074554' ||
+      github.event.project_card.column_id == '16074555'
     runs-on: ubuntu-latest
     permissions:
       issues: write
@@ -33,7 +34,7 @@ jobs:
           remove-labels: "FP: Unplanned, FP: Planned, FP: Completed"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
   moved_done:
-    if: github.event.project_card.column_id == '16078265'
+    if: github.event.project_card.column_id == '16074560'
     runs-on: ubuntu-latest
     permissions:
       issues: write
@@ -45,7 +46,7 @@ jobs:
           remove-labels: "FP: Unplanned, FP: Planned, FP: In Development"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
   moved_parkinglot:
-    if: github.event.project_card.column_id == '16078263'
+    if: github.event.project_card.column_id == '16074567'
     runs-on: ubuntu-latest
     permissions:
       issues: write
